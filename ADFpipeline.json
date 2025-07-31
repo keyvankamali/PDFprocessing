@@ -1,0 +1,48 @@
+{
+    "name": "dynamicBlobPath",
+    "properties": {
+        "activities": [
+            {
+                "name": "Notebook1",
+                "type": "DatabricksNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/fnezhad@pnimedia.com/test2",
+                    "baseParameters": {
+                        "filePath": {
+                            "value": "@pipeline().parameters.filePath",
+                            "type": "Expression"
+                        },
+                        "fileName": {
+                            "value": "@pipeline().parameters.fileName",
+                            "type": "Expression"
+                        }
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureDatabricks1",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "parameters": {
+            "filePath": {
+                "type": "string"
+            },
+            "fileName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2025-07-31T03:33:29Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}

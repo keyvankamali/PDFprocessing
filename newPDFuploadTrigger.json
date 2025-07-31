@@ -1,0 +1,29 @@
+{
+    "name": "FilePathTrigger",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "dynamicBlobPath",
+                    "type": "PipelineReference"
+                },
+                "parameters": {
+                    "filePath": "@triggerBody().folderPath",
+                    "fileName": "@triggerBody().fileName"
+                }
+            }
+        ],
+        "type": "BlobEventsTrigger",
+        "typeProperties": {
+            "blobPathBeginsWith": "/documents/blobs/",
+            "blobPathEndsWith": ".pdf",
+            "ignoreEmptyBlobs": true,
+            "scope": "/subscriptions/131e1348-389b-46b4-b667-a95c0c8a07d8/resourceGroups/fereshteh-test/providers/Microsoft.Storage/storageAccounts/teststoragefereshteh",
+            "events": [
+                "Microsoft.Storage.BlobCreated"
+            ]
+        }
+    }
+}
